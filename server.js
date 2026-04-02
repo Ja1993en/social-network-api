@@ -1,10 +1,19 @@
-const express =require('express')
-const db = require('./config/connection')
+const express = require('express');
+const db = require('./config/connection');
+const routes = require('./routes');
 
-router.use('/api', apiRoutes);
+const cwd = process.cwd();
 
-router.use((req, res) => {
-  return res.send('Wrong route!');
+const PORT = 3001;
+const app = express();
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(routes);
+
+db.once('open', () => {
+  app.listen(PORT, () => {
+    console.log(`API server for ${activity} running on port ${PORT}!`);
+  });
 });
-
-module.exports = router;
