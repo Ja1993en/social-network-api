@@ -1,6 +1,6 @@
 const  mongoose  = require("mongoose");
 
-const reactionSchema = new mongoose.schema({
+const reactionSchema = new mongoose.Schema({
     thoughtText: { 
         type: String, 
         required: true,
@@ -13,6 +13,14 @@ const reactionSchema = new mongoose.schema({
 
 });
 
-const Reaction = mongoose.model('Reaction', reactionSchema);
+// applicationSchema
+//   .virtual('getResponses')
+//   // Getter
+//   .get(function () {
+//     return this.tags.length;
+//   });
+
+
+const Reaction = mongoose.model('reaction', reactionSchema);
 
 module.exports = Reaction;

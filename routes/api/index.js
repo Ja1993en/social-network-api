@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const userApi = require('./user');
-const reactionApi = require('./reaction');
-const thoughtsApi = require('./thought');
+const userApi = require('./userRoutes');
+const reactionApi = require('./reactionRoutes');
+const thoughtsApi = require('./thoughtRoutes');
 
 
 router.use('/users', userApi);

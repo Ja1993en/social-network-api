@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.schema({
+const userSchema = new mongoose.Schema({
     username: { 
         type: String, 
         required: true,
@@ -17,16 +17,23 @@ const userSchema = new mongoose.schema({
     },
     thoughts: {
         type: mongoose.ObjectId,
-        ref: 'Thought'
+        ref: 'thought'
     },
-    friends: {
+    friends: { 
         type: mongoose.ObjectId,
-        ref: 'User'
+        ref: 'user'
     },
-    lastAccesed: { type: Date, default: Date.now},
-    timestamps: true
+
+    
 
 });
+
+// userSchema
+//   .virtual('getResponses')
+//   // Getter
+//   .get(function () {
+//     return this.tags.length;
+//   });
 
 const User = mongoose.model('User', userSchema);
 
