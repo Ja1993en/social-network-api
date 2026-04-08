@@ -87,13 +87,13 @@ module.exports = {
   createReaction(req, res) {
     Thought.findByIdAndUpdate(
       { _id: req.params.thoughtId },
-      { $addToSet: { reactions: req.body } },
+      { $push: { reactions: req.body } },
       { runValidators: true, new: true }
     )
-      .then((application) =>
-        !application
+      .then((thought) =>
+        !thought
           ? res.status(404).json({ message: 'No application with this id!' })
-          : res.json(application)
+          : res.json(thought)
       )
       .catch((err) => res.status(500).json(err));
   },

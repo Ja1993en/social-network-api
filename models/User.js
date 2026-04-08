@@ -15,25 +15,25 @@ const userSchema = new mongoose.Schema({
         match: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 
     },
-    thoughts: {
+    thoughts: [{
         type: mongoose.Types.ObjectId,
         ref: 'thought'
-    },
-    friends: { 
+    }],
+    friends: [{ 
         type: mongoose.Types.ObjectId,
         ref: 'user'
-    },
+    }],
 
     
 
 });
 
-// userSchema
-//   .virtual('getResponses')
-//   // Getter
-//   .get(function () {
-//     return this.tags.length;
-//   });
+userSchema
+  .virtual('friendCount')
+  // Getter
+  .get(function () {
+    return this.friends.length;
+  });
 
 const User = mongoose.model('User', userSchema);
 

@@ -44,5 +44,27 @@ module.exports = {
         .then((thoughts) => res.json(thoughts))
         .catch((err) => res.status(500).json(err));
 
-    }
+    },
+
+addFriend(req, res) {
+    User.findByIdAndUpdate(req.params.userId,
+        { $push: { friends: req.params.friendId } },
+        { new: true }
+    )
+    .then((friend) => res.json(friend))
+    .catch((err) => res.status(500).json(err));
+
+},
+
+deleteFriend(req, res) {
+    User.findByIdAndUpdate(req.params.userId,
+        { $pull: { friends: req.params.friendId } },
+        { new: true }
+    )
+    .then((friend) => res.json(friend))
+    .catch((err) => res.status(500).json(err));
+}
+    
+         
+      
 }
