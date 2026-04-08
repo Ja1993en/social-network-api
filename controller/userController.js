@@ -17,6 +17,8 @@ module.exports = {
         .catch((err) => res.status(500).json(err));
       },
 
+
+
       //Creates a new User
     createUser(req, res) {
         User.create(req.body)
@@ -34,8 +36,8 @@ module.exports = {
     updateUser(req, res) {
         User.findByIdAndUpdate(req.params.id,
             { 
-                username: 'jelly',
-                email: "jelly@gmail.com"
+                username: req.body.username,
+                email: req.body.email
             },
             { new: true }
         )
