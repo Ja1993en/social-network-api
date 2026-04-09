@@ -16,20 +16,10 @@ const reactionSchema = new mongoose.Schema(
         createdAt: { type: Date, default: Date.now },
 
     },
-    {
-        toJSON: {
-          getters: true,
-        },
-        id: false,
-      }
+  
 );
 
-// // applicationSchema
-// //   .virtual('getResponses')
-// //   // Getter
-// //   .get(function () {
-// //     return this.tags.length;
-// //   });
+
 
 
 // const Reaction = mongoose.model('reaction', reactionSchema);
