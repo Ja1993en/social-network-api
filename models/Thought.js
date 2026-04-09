@@ -26,12 +26,7 @@ const thoughtSchema = new mongoose.Schema(
 
 );
 
-// thoughtSchema
-//     .virtual('getFriends ')
-//     // Getter
-//     .get(function () {
-//         return this.reactions.length;
-//     });
+
 
 const Thought = mongoose.model('thought', thoughtSchema);
 
